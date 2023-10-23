@@ -1,0 +1,30 @@
+<div class="card h-100">
+    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+    <div class="card-body p-4">
+
+        <h3 class="card-title mb-2" style="text-align: center;">{{movie.name}}</h3>
+
+
+
+        <h5 class="card-title mb-2" style="font-weight: bolder;"><span style="font-weight: normal ;"> Director</span>: {{movie.director}}</h5>
+
+
+        <h5 class="card-title mb-2" style="font-weight: bolder;"><span style="font-weight: normal ;"> Duration</span>: {{movie.duration}}</h5>
+
+
+        Descritpion: <p class="card-title mb-2" style="font-style: italic;" >This movie...</p>
+
+
+
+        Genre: <h5 class="card-title mb-2">
+            <span *ngFor="let genre of movie.genres">{{genre}}</span>
+        </h5>
+
+
+
+        <button (click)="openPopUp()" mat-raised-button color="primary" *ngIf="userLogIn">Create reservation</button>
+
+        <button type="button" class="btn btn-info" (click)="deleteMovie()" *ngIf="adminLogIn" >Delete</button>
+
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="container">
+  <h1 class="text-center m-4" style="font-weight: bold;">Register</h1>
+  <div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-6">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="mb-1">
+          <label for="Name" class="form-label">Name: </label>
+          <input id="Name" class="form-control" type="text" formControlName="name" required>
+        </div>
+        <div class="form-text" *ngIf="!name?.valid && name?.touched">
+          <div class=" alert alert-danger" role="alert" *ngIf="name?.errors?.['required']">
+            Required!
+          </div>
+          <div class=" alert alert-danger" role="alert" *ngIf="name?.errors?.['minLength']">
+            Minimum length must be 2!
+          </div>
+          <div class=" alert alert-danger" role="alert" *ngIf="name?.errors?.['maxLength']">
+            Max length  is 15!
+          </div>
+        </div>
+        <div class="mb-1">
+          <label for="Surname" class="form-label">Surname: </label>
+          <input id="Surname" class="form-control" type="text" formControlName="surname" required>
+        </div>
+        <div class="form-text" *ngIf="!surname?.valid && surname?.touched">
+          <div class="alert alert-danger" *ngIf="surname?.errors?.['required']">
+            Required!
+          </div>
+          <div class="alert alert-danger" *ngIf="surname?.errors?.['minLength']">
+            Required!
+          </div>
+          <div class="alert alert-danger" *ngIf="surname?.errors?.['maxLength']">
+            Required!
+          </div>
+        </div>
+
+
+        <div class="mb-1">
+          <label for="email" class="form-label">Email</label>
+          <input id="email" type="email" class="form-control" formControlName="email" required>
+        </div>
+        <div class="form-text" *ngIf="!email?.valid && email?.touched">
+          <div class="alert alert-danger" role="alert" *ngIf="email?.errors?.['required']">
+            Email address is required!
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="email?.errors?.['email']">
+            Email address is not valid!
+          </div>
+        </div>
+        <div class="mb-1">
+          <label for="username" class="form-label">Username: </label>
+          <input id="username" class="form-control" type="text" formControlName="username" required>
+        </div>
+        <div class="form-text" *ngIf="username?.invalid && username?.touched">
+          <div class="alert alert-danger" *ngIf="username?.errors?.['required']">
+            Username is required!
+          </div>
+          <div class="alert alert-danger" *ngIf="username?.errors?.['forbiddenUsername']">
+            This username is forbidden!
+          </div>
+        </div>
+        <div class="mb-1">
+          <label for="password" class="form-label">Password: </label>
+          <input id="password" class="form-control" type="text" formControlName="password" required>
+        </div>
+        <div class="form-text" *ngIf="!password?.valid && password?.touched">
+          <div class=" alert alert-danger" role="alert" *ngIf="!password?.errors?.['minLength']">
+            Password lenght must be at least 5!
+          </div>
+        </div>
+        <button class="btn btn-primary mt-3" type="submit" [disabled]="!registerForm.valid">Submit</button>
+      </form>
+      <p>{{registerForm.value|json}}</p>
+    </div>
+    <div class="col-3"> </div>
+  </div>
+</div>

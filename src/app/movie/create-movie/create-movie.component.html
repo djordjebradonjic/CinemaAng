@@ -1,0 +1,38 @@
+<div class="container">
+    <h1 class="text-center m-3" style="font-weight: bold;">Create movie</h1>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+                <div class="mb-1">
+                    <label for="Name" class="form-label">Name: </label>
+                    <input id="Name" class="form-control" type="text" formControlName="name" required>
+                </div>
+                <div class="mb-1">
+                    <label for="Director" class="form-label">Director: </label>
+                    <input id="Director" class="form-control" type="text" formControlName="director" required>
+                </div>
+                <div class="mb-1">
+                    <label for="Duration" class="form-label">Duration: </label>
+                    <input id="Duration" class="form-control" type="text" formControlName="duration" required>
+                </div>
+                <div class="mb-1">
+                    <label for="Desc" class="form-label">Description: </label>
+                    <input id="Desc" class="form-control" type="text" formControlName="description" required>
+                </div>
+                <div class="mb-1">
+                    <label for="Genre" class="form-label">Choose genre: </label>
+                    <select id="Genre" class="form-select" multiple aria-label="multiple select example"
+                        formControlName="genres">
+                        <option value="{{g}}" *ngFor="let g of genresSelect">{{g}}</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary mt-3" type="submit" >Submit</button>
+            </form>
+            <p>{{movieForm.value|json}}</p>
+           
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+</div>

@@ -1,0 +1,32 @@
+<form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+    <h1 mat-dialog-title>{{inputData.title}}</h1>
+    <div mat-dialog-content style="width: 100%;">
+        <mat-form-field style="width: 30%;">
+            <mat-label>Number of tickets:</mat-label>
+            <input formControlName="numberOfTickets" matInput>
+            <mat-hint>Max 5</mat-hint>
+            <mat-error *ngIf="reservationForm.get('numberOfTickets')?.hasError('required')">Number is
+                required</mat-error>
+            <mat-error *ngIf="reservationForm.get('numberOfTickets')?.hasError('max')">Limit exceed</mat-error>
+        </mat-form-field>
+
+        <mat-form-field style="width: 60%;">
+            <mat-label>Select projection:</mat-label>
+            <mat-select formControlName="projectionId">
+                <mat-option *ngFor="let p of projections" [value]="p.id">
+                    Start time: {{p.startTime}} Price: {{p.ticketPrice}} Available seats: {{p.availableSeats}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="reservationForm.get('projectionId')?.hasError('required')">Projection is
+                required</mat-error>
+
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" type="submit" style="margin-left: 20px;">Save
+        </button>
+        <button (click)="closePopUp()" mat-raised-button color="warn">Close </button>
+        <button mat-raised-button mat-dialog-close>Cancel</button>
+    </div>
+</form>

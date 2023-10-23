@@ -1,0 +1,34 @@
+<div class="container">
+    <h1 class="text-center m-3 " style="font-weight: bold;">Create projection</h1>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <form [formGroup]="projectionForm" (ngSubmit)="onSubmit()">
+                
+                <p-calendar class="form-control" formControlName="startTime" [showTime]="true"
+                    [showSeconds]="true">Enter date</p-calendar>
+                <div class="mb-1">
+                    <label for="ticketPrice" class="form-label">Ticket price: </label>
+                    <input id="ticketPrice" class="form-control" type="number" formControlName="ticketPrice" required>
+                </div>
+                <div class="mb-1">
+                    <label for="movie" class="form-label">Choose movie: </label>
+                    <select id="movie" class="form-select" formControlName="movieId">
+                        <option value="{{m.id}}" *ngFor="let m of movies">{{m.name}}</option>
+                    </select>
+                </div>
+                <div class="mb-1">
+                    <label for="movie" class="form-label">Choose theater: </label>
+                    <select id="movie" class="form-select" formControlName="theaterId">
+                        <option value="{{t.id}}" *ngFor="let t of theaters">{{t.name}}</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary mt-3" type="submit">Submit</button>
+            </form>
+            <p>{{projectionForm.value|json}}</p>
+
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+</div>

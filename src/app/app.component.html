@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark" style="position: fixed;
+        width: 100%;
+         z-index: 99999999;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="assets/logo.jpg" alt="" width="30" height="24">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/home" routerLinkActive="active"
+                        ariaCurrentWhenActive="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/login" routerLinkActive="active"
+                        ariaCurrentWhenActive="page">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/register" routerLinkActive="active"
+                        ariaCurrentWhenActive="page">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/create-movie" routerLinkActive="active"
+                        ariaCurrentWhenActive="page">Create movie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/create-projection" routerLinkActive="active"
+                        ariaCurrentWhenActive="page">Create projection</a>
+                </li>
+            </ul>
+            <form class="d-flex" onsubmit="logOut()">
+                <button class="btn btn-outline-success" style="color: white;" type="submit">LogOut </button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div>
+    <p>Uloga je: {{authService.getRole()}},logovan : {{authService.isLogin}}</p>
+</div>
+<router-outlet></router-outlet>
